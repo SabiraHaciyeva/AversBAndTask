@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avers Admin - Giriş</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * { font-family: 'Inter', sans-serif; }
+        
+        .avers-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+        }
+        
+        .avers-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(30, 58, 138, 0.15);
+        }
+        
+        .avers-input {
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .avers-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+        
+        .avers-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .avers-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        .bg-animated {
+            background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #06b6d4, #1e40af);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .shape {
+            position: absolute;
+            filter: blur(1px);
+            animation: float 20s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <div class="min-h-screen bg-animated flex items-center justify-center p-4 relative overflow-hidden">
+        <div class="shape shape-1" style="top:10%;left:10%;width:80px;height:80px;background:rgba(255,255,255,0.1);border-radius:50%"></div>
+        <div class="shape shape-2" style="top:20%;right:15%;width:120px;height:120px;background:rgba(255,255,255,0.08);border-radius:30% 70% 70% 30% / 30% 30% 70% 70%"></div>
+        
+        <div class="avers-card w-full max-w-md p-8 md:p-10 relative z-10">
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 avers-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <i class="fas fa-mountain text-white text-3xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-slate-800 mb-1">Xoşgəldin!</h1>
+                <p class="text-slate-500 text-sm">Admin Panelə giriş</p>
+            </div>
+
+            <!-- ФОРМА -->
+            <form class="space-y-6" onsubmit="goToAdmin(event)">
+                <div class="relative">
+                    <input type="email" id="email" placeholder="Email daxil et" 
+                        class="avers-input w-full pl-12 pr-4 py-4 rounded-xl bg-slate-50 text-slate-800 outline-none text-sm"
+                        value="admin@admin">
+                    <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                </div>
+
+                <div class="relative">
+                    <input type="password" id="password" placeholder="Parol daxil et" 
+                        class="avers-input w-full pl-12 pr-12 py-4 rounded-xl bg-slate-50 text-slate-800 outline-none text-sm"
+                        value="admin123">
+                    <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <i class="fas fa-eye absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 cursor-pointer hover:text-blue-600" onclick="togglePassword()"></i>
+                </div>
+
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-blue-600">
+                        <span class="text-slate-600">Yadda Saxla</span>
+                    </label>
+                    <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Şifrəni unutdun?</a>
+                </div>
+
+                <!-- КНОПКА DAXIL OL -->
+                <button type="submit" class="avers-btn w-full py-4 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2">
+                    <span>Daxil ol</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- ТЕСТОВЫЕ ДАННЫЕ -->
+            <div class="bg-blue-50 rounded-xl p-4 border border-blue-100 mt-6">
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-info text-blue-600 text-sm"></i>
+                    </div>
+                    <div class="text-sm text-slate-600">
+                        <p class="font-medium text-slate-800 mb-1">Test Hesabı:</p>
+                        <p>Email: <span class="font-mono bg-white px-2 py-0.5 rounded text-blue-600">admin@admin</span></p>
+                        <p>Parol: <span class="font-mono bg-white px-2 py-0.5 rounded text-blue-600">admin123</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ВАЖНО: правильный путь к JS -->
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avers Admin - Xəbərlər</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * { font-family: 'Inter', sans-serif; }
+        
+        .avers-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+        }
+        
+        .sidebar-item {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-item:hover, .sidebar-item.active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+            color: #1e3a8a;
+            border-right: 3px solid #3b82f6;
+        }
+        
+        .avers-table th {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        
+        .avers-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .avers-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-72 bg-white h-screen fixed left-0 top-0 shadow-xl z-50 overflow-y-auto">
+            <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 avers-gradient rounded-lg flex items-center justify-center">
+                        <i class="fas fa-mountain text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-slate-800">Avers</span>
+                        <p class="text-xs text-slate-500">Admin Panel</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4 px-4">Əsas Menu</p>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="dashboard.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:text-slate-900">
+                            <i class="fas fa-home w-5 text-center"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sliders.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:text-slate-900">
+                            <i class="fas fa-images w-5 text-center"></i>
+                            Slider
+                        </a>
+                    </li>
+                    <li>
+                        <a href="services.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:text-slate-900">
+                            <i class="fas fa-briefcase w-5 text-center"></i>
+                            Xidmətlər
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:text-slate-900">
+                            <i class="fas fa-info-circle w-5 text-center"></i>
+                            Haqqımızda
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blogs.html" class="sidebar-item active flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 font-medium">
+                            <i class="fas fa-newspaper w-5 text-center"></i>
+                            Xəbərlər
+                        </a>
+                    </li>
+                    <li>
+                        <a href="teams.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:text-slate-900">
+                            <i class="fas fa-users w-5 text-center"></i>
+                            Komanda
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4 mt-8 px-4">Tənzimləmələr</p>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="settings.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:text-slate-900">
+                            <i class="fas fa-cog w-5 text-center"></i>
+                            Ümumi Ayarlar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50">
+                            <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                            Çıxış
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-72">
+            <!-- Header -->
+            <header class="bg-white shadow-sm sticky top-0 z-40 px-8 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex-1 max-w-xl">
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" placeholder="Axtar..." 
+                                class="w-full pl-12 pr-4 py-2.5 bg-slate-100 border-0 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition flex items-center justify-center relative">
+                            <i class="fas fa-bell"></i>
+                            <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                        </button>
+                        <div class="flex items-center gap-3">
+                            <div class="text-right hidden sm:block">
+                                <p class="text-sm font-semibold text-slate-800">Admin</p>
+                                <p class="text-xs text-slate-500">Super Admin</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" 
+                                 class="w-10 h-10 rounded-full border-2 border-blue-500 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="p-8">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-800">Xəbərlər / Blog</h2>
+                            <p class="text-sm text-slate-500">Xəbər və bloq yazılarını idarə et</p>
+                        </div>
+                        <button onclick="openNews()"
+                            class="avers-btn px-6 py-2.5 rounded-xl text-white font-medium flex items-center gap-2 text-sm"><span>Yeni
+                                xəbər</span></button>
+                       
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full avers-table">
+                            <thead>
+                                <tr>
+                                    <th class="p-4 text-left text-sm font-semibold text-white rounded-tl-lg">ID</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white">Ikon</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white">Title</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white">Image_url</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white">Kateqoriya</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white">Tarix</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white">Author</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white">Status</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-white rounded-tr-lg">Əməliyyat</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100"> <!--g sildi service gelcek-->
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+     <!--Modal Blogs xeberler(acilan add penceresi)-->
+    <div>
+        <div style="display: none;" id="modalNews">
+            <div
+                class="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto">
+                <div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-6 relative">
+                    <div class="flex items-center pb-3 border-b border-gray-300">
+                        <h3 class="text-slate-900 text-xl font-semibold flex-1">Yeni Xəbər</h3>
+                        <svg onclick="openNews()" id="closeIcon" xmlns="http://www.w3.org/2000/svg"
+                            class="w-3.5 h-3.5 ml-2 cursor-pointer shrink-0 fill-gray-400 hover:fill-red-500"
+                            viewBox="0 0 320.591 320.591">
+                            <path
+                                d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                                data-original="#000000"></path>
+                            <path
+                                d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                                data-original="#000000"></path>
+                        </svg>
+                    </div>
+
+                    <div class="my-2">
+                        <div class="p-4 mx-auto max-w-xl bg-white">
+                            <form class="mt-1 space-y-5">
+                                <div>
+                                    <label class='text-sm text-slate-900 font-medium mb-2 block'>Xəbər Title</label>
+                                    <input id="newsTitle" type='text' placeholder='Enter Title'
+                                        class="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all" />
+                                </div>
+                                <div>
+                                    <label class='text-sm text-slate-900 font-medium mb-2 block'>Image_url</label>
+                                    <input id="newsImage" type='text' placeholder='Enter Title'
+                                        class="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all" />
+                                </div>
+                                <div>
+                                    <label class='text-sm text-slate-900 font-medium mb-2 block'>Day </label>
+                                    <input id="newsDay" type='text' placeholder='Enter Day'
+                                        class="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all" />
+                                </div>
+                                <div>
+                                    <label class='text-sm text-slate-900 font-medium mb-2 block'>Month </label>
+                                    <input id="newsMonth" type='text' placeholder='Enter Month'
+                                        class="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all" />
+                                </div>
+                                <div>
+                                    <label class='text-sm text-slate-900 font-medium mb-2 block'>Category</label>
+                                    <input id="newsCategory" type='text' placeholder='Enter Category'
+                                        class="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all" />
+                                </div>
+                                <div>
+                                    <label class='text-sm text-slate-900 font-medium mb-2 block'>Author</label>
+                                    <input id="newsAuthor" type='text' placeholder='Enter Author'
+                                        class="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all" />
+                                </div>
+                                <div>
+                                    <label class='text-sm text-slate-900 font-medium mb-2 block'>Xidmətin status</label>
+                                    <select id="newsStatus"
+                                        class="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all cursor-pointer">
+                                        <option value="1">Aktiv</option>
+                                        <option value="0">Deaktiv</option>
+                                    </select>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-300 pt-6 flex justify-end gap-4">
+                        <button onclick="openNews()" id="closeButton" type="button"
+                            class="px-4 py-2 cursor-pointer rounded-lg text-slate-900 text-sm font-medium border-none outline-none tracking-wide bg-gray-200 hover:bg-gray-300 active:bg-gray-200">Bağla</button>
+                        <button type="button" onclick="sendNews()"
+                            class="px-4 py-2 cursor-pointer rounded-lg text-white text-sm font-medium border-none outline-none tracking-wide bg-blue-600 hover:bg-blue-700 active:bg-blue-600">Əlavə
+                            et</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="../js/denemenews.js"></script>
+</body>
+</html>
