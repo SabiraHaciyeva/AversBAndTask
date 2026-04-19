@@ -98,7 +98,7 @@ function deleteService(id) {
     })
     .then(() => {
         alert('Xidmət silindi');
-        getAllServices(); // Siyahını yenilə
+        getAllServices();
     })
     .catch(err => {
         console.error('Xəta:', err);
@@ -111,7 +111,7 @@ function editService(id) {
     fetch(`https://69b3c525e224ec066bdd09b4.mockapi.io/services/${id}`)
         .then(res => res.json())
         .then(data => {
-            // inp'lerin icin dolduur
+            // inp'lerin içini dolduur 
             document.getElementById('editServiceId').value = data.id;
             document.getElementById('editServiceTitle').value = data.title || '';
             document.getElementById('editServiceImage').value = data.image || '';

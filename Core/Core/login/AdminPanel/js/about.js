@@ -364,7 +364,7 @@ function editAbout(id) {
     fetch(`${API_URL}/${id}`)
         .then(res => res.json())
         .then(data => {
-            // bu lazimlidi api glenei inputun icine yazir
+            // bu lazimlidi api glənləi inputun icine yazir
             editId.value = data.id;
             document.getElementById('editCategoryDisplay').value = data.category;
             editCategory.value = data.category;

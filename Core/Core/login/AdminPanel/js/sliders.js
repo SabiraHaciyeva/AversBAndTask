@@ -25,10 +25,10 @@ function getAllSliders() {
                         <td class="p-4">
                             <div class="flex items-center gap-2">
                                <!-- BU DÜYMƏNİ ƏLAVƏ EDİN -->
-                                    <button onclick="editSlider(${item.Id})" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 flex items-center justify-center transition">
+                                    <button onclick="editSlider(${item.id})" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 flex items-center justify-center transition">
                                         <i class="fas fa-edit text-xs"></i>
                                     </button>
-                                    <button onclick="deleteSliders(${item.Id})" class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 flex items-center justify-center transition">
+                                    <button onclick="deleteSliders(${item.id})" class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 flex items-center justify-center transition">
                                         <i class="fas fa-trash text-xs"></i>
                                     </button>
                             </div>
@@ -38,7 +38,7 @@ function getAllSliders() {
             });
         })
         .catch(err => {
-            console.error('Xəta:', err);
+            console.error('Xeta:', err);
             alert('Xəbərləri yükləmək mümkün olmadı');
         });
 }
@@ -87,8 +87,8 @@ function sendSliders() {
             document.getElementById('sliderStatus').value = '1';
         })
         .catch(err => {
-            console.error('Xəta:', err);
-            alert('Xəta baş verdi: ' + err.message);
+            console.error('Xeta:', err);
+            alert('Xeta bas verdi: ' + err.message);
         });
 }
 
@@ -104,7 +104,7 @@ function deleteSliders(id) {
             getAllSliders();
         })
         .catch(err => {
-            console.error('Xəta:', err);
+            console.error('Xeta:', err);
             alert('Silə bilmədik');
         });
 }
@@ -122,25 +122,26 @@ function openSliders() {
 
 
 // Edit slider eyni yazmisam ama islemir baxarsan
+// Mock api pb var imis(api icon-url burda image fln)
 function editSlider(id) {
     fetch(`https://69e2d0313327837a1552a346.mockapi.io/admin/slider/slider/${id}`)
         .then(res => res.json())
         .then(data => {
             console.log('Gələn ID:', id);  // ← BU SƏTRİ ƏLAVƏ EDİN
             console.log('API-dən gələn data:', data);
-            // Modal input-larını doldurru 1in yazib kopyla yapisdir etmise niyese burda tapmir
+            // Modal input-larını doldurru 1in yazib kopyla yapisdir etmise niyese burda tapmir+duzeldi 
             document.getElementById('editSliderId').value = data.id;
-            document.getElementById('editSliderTitle').value = data.Title || '';
-            document.getElementById('editSliderImage').value = data.Image || '';
-            document.getElementById('editSliderIcon').value = data.Icon || '';
-            document.getElementById('editSliderSira').value = data.Sira || '';
-            document.getElementById('editSliderStatus').value = data.Status == "1" || data.Status == 1 ? "1" : "0";
+            document.getElementById('editSliderTitle').value = data.title || '';
+            document.getElementById('editSliderImage').value = data.image || '';
+            document.getElementById('editSliderIcon').value = data.icon || '';
+            document.getElementById('editSliderSira').value = data.sira || '';
+            document.getElementById('editSliderStatus').value = data.status == "1" || data.Status == 1 ? "1" : "0";
 
             openEditSliderModal();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(err => {
-            console.error('Xəta:', err);
+            console.error('Xeta:', err);
             alert('Slaydı yükləmək mümkün olmadı');
         });
 }
@@ -173,8 +174,8 @@ function updateSlider() {
             closeEditSliderModal();
         })
         .catch(err => {
-            console.error('Xəta:', err);
-            alert('Xəta baş verdi: ' + err.message);
+            console.error('Xeta:', err);
+            alert('Xeta baş verdi: ' + err.message);
         });
 }
 
